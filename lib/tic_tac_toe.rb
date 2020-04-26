@@ -76,7 +76,7 @@ class TicTacToe
   end
   
   def full?
-    
+    @board.all? {|check| check != " "}
   end
   
   def draw?
