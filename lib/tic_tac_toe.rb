@@ -19,11 +19,13 @@ class TicTacToe
     puts "#{@board}" 
   end
   
-  def input_to_index (integer)
-    integer = @board[integer+1]
+  def input_to_index(number)
+    position = @board[number+1]
   end
   
-  def move(index, token=X)
+  def move(number, token=X)
+    input_to_index(number)
+    position
   end 
   
   def valid_move?(position)
