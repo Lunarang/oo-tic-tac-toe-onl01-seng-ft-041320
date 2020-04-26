@@ -25,7 +25,7 @@ class TicTacToe
   
   def move(number, token=X)
     input_to_index(number)
-    position
+    position.gsub 
   end 
   
   def valid_move?(position)
