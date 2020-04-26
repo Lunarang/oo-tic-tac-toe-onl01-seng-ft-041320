@@ -1,5 +1,6 @@
 class TicTacToe 
-
+  attr_accessor :board 
+  
   def intitialize 
     @board = ["", "", "", "", "", "", "", "", ""]
   end
@@ -23,33 +24,37 @@ class TicTacToe
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} " 
   end
   
-  def input_to_index(number)
+  def input_to_index (number)
     position = @board[number+1]
+    position
   end
   
-  def move(number, token=X)
-    input_to_index(number)
-    position.gsub ("", "#{token}")
+  def move (number, token="X")
+    input_to_index(number) = token
   end 
   
-  def position_taken?(number)
-    input_to_index(number.include? ("X" || "O")
+  def position_taken? (number)
+    if input_to_index(number).include? ("X" || "O")
+      TRUE
+    else
+      FALSE
+    end
   end
       
   def valid_move?(position)
-    
+    position.between?(0,8) && (position_taken?(position) == FALSE)
   end
   
-  
   def turn
-    ask for input
-    get input
-    translate input into index
-    if index is valid
-      make the move for index
-      show the board
-    else
-      ask for input again
+    puts "What position do you want, (1-9)?" 
+    user_input = gets.strip # ask for input
+    position = input_to_index (user_input) # get input & translate input into index
+    if valid_move?(position) == TRUE 
+      move(position, current_player)
+      display_board # if index is valid => make the move for index & show the board
+    else 
+      turn #else => ask for input again
+    end
   end
   
   def turn_count
